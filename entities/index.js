@@ -6,47 +6,62 @@ import Matter from "matter-js";
 import Constants from "../Constants";
 
 export default (gameWorld) => {
-    let engine = Matter.Engine.create({ enableSleeping: false });
-    let world = engine.world;
-    engine.gravity.y = 0;
+  let engine = Matter.Engine.create({ enableSleeping: false });
+  let world = engine.world;
 
-    return {
-        physics: { engine, world },
-        Square: Box(world, "green", { x: 100, y: 120 }, { width: 40, height: 40 }),
+  engine.gravity.y = 0;
 
-        BottomBoundary: Boundary(
-            world,
-            "red",
-            { x: Constants.WINDOW_WIDTH / 2, y: Constants.WINDOW_HEIGHT },
-            { height: 90, width: Constants.WINDOW_WIDTH }
-        ),
+  return {
+    physics: { engine, world },
+    Square: Box(
+      world,
+      "green",
+      { x: Constants.WINDOW_WIDTH / 2, y: Constants.WINDOW_HEIGHT / 4 },
+      { width: 40, height: 40 },
+      { isStatic: false, label: 'Player' }
+    ),
 
-        TopBoundary: Boundary(
-            world,
-            'cyan',
-            { x: Constants.WINDOW_WIDTH / 2, y: 0 },
-            { height: 90, width: Constants.WINDOW_WIDTH }
-        ),
+    Food: Box(
+      world,
+      'magenta',
+      {x: Math.random() * ((Constants.WINDOW_WIDTH - 25) - 25) + 25, y: Math.random() * ((Constants.WINDOW_HEIGHT / 2 - 15) - 15) + 15}, // Spawn within playable area
+      {width: 20, height: 20},
+      {isStatic: true, label: 'Food'}
+    ),
 
-        LeftBoundary: Boundary(
-            world,
-            'blue',
-            { x: 0, y: Constants.WINDOW_HEIGHT / 2 },
-            { height: Constants.WINDOW_HEIGHT, width: 90 }
-        ),
+    BottomBoundary: Boundary(
+      world,
+      "red",
+      { x: Constants.WINDOW_WIDTH / 2, y: Constants.WINDOW_HEIGHT },
+      { height: 30, width: Constants.WINDOW_WIDTH }
+    ),
 
-        RightBoundary: Boundary(
-            world,
-            'yellow',
-            { x: Constants.WINDOW_WIDTH, y: Constants.WINDOW_HEIGHT / 2 },
-            { height: Constants.WINDOW_HEIGHT, width: 90 }
-        ),
+    TopBoundary: Boundary(
+      world,
+      'red',
+      { x: Constants.WINDOW_WIDTH / 2, y: 0 },
+      { height: 30, width: Constants.WINDOW_WIDTH }
+    ),
 
-        CenterSquare: Boundary(
-            world,
-            'black',
-            { x: Constants.WINDOW_WIDTH / 2, y: Constants.WINDOW_HEIGHT / 2 },
-            { height: 50, width: 50}
-        )
-    };
+    LeftBoundary: Boundary(
+      world,
+      'red',
+      { x: 0, y: Constants.WINDOW_HEIGHT / 2 },
+      { height: Constants.WINDOW_HEIGHT, width: 30 }
+    ),
+
+    RightBoundary: Boundary(
+      world,
+      'red',
+      { x: Constants.WINDOW_WIDTH, y: Constants.WINDOW_HEIGHT / 2 },
+      { height: Constants.WINDOW_HEIGHT, width: 30 }
+    ),
+
+    CenterBoundary: Boundary(
+      world,
+      'red',
+      { x: Constants.WINDOW_WIDTH / 2, y: Constants.WINDOW_HEIGHT / 2 },
+      { height: 20, width: Constants.WINDOW_WIDTH }
+    )
+  };
 };
