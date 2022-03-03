@@ -17,7 +17,7 @@ export default function App() {
         entities={entities()}
         style={styles.gameContainer}
       >
-        <StatusBar style="auto" />
+        <StatusBar hidden />
       </GameEngine>
 
 
@@ -56,8 +56,6 @@ export default function App() {
           </TouchableOpacity>
         </View>
       </View>
-
-
       <Text style={styles.watermark}>Aleksei Bikov</Text>
     </View>
   );
@@ -103,7 +101,7 @@ const styles = StyleSheet.create({
     
   },
   watermark: {
-    marginBottom: 100,
+    marginBottom: 15,
     fontFamily: 'monospace'
   }
 
