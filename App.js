@@ -22,7 +22,7 @@ export default function App() {
 
 
       {/* Controls */}
-      <View style={styles.controls}>
+      {/* <View style={styles.controls}>
         <View style={styles.controlRow}>
           <TouchableOpacity onPress={() => {
             gameEngine.dispatch({ type: 'move-up'})
@@ -55,7 +55,7 @@ export default function App() {
             </View>
           </TouchableOpacity>
         </View>
-      </View>
+      </View> */}
       <Text style={styles.watermark}>Aleksei Bikov</Text>
     </View>
   );

@@ -1,7 +1,78 @@
+import World from "matter-js";
 import Matter, { Sleeping } from "matter-js";
 import Constants from "./Constants";
 const Physics = (entities, { touches, time, dispatch, events }) => {
     let engine = entities.physics.engine;
+    
+    
+    let world = engine.world;
+
+    engine.gravity.y = 0.5;
+
+    // const contraint = Matter.Constraint.create({
+    //     bodyA: entities.CircleAnchorLeft.body,
+    //     bodyB: entities.Circle8.body,
+    //     length: 30
+    // })
+
+    const constraint = Matter.Constraint.create({
+        bodyA: entities.CircleAnchorLeft.body,
+         bodyB: entities.Circle8.body,
+         length: 30
+    })
+    const constraint2 = Matter.Constraint.create({
+        bodyA: entities.Circle8.body,
+         bodyB: entities.Circle7.body,
+         length: 30
+    })
+    const constraint3 = Matter.Constraint.create({
+        bodyA: entities.Circle7.body,
+         bodyB: entities.Circle6.body,
+         length: 30
+    })
+    const constraint4 = Matter.Constraint.create({
+        bodyA: entities.Circle6.body,
+         bodyB: entities.Circle5.body,
+         length: 30
+    })
+    const constraint5 = Matter.Constraint.create({
+        bodyA: entities.Circle5.body,
+         bodyB: entities.Circle4.body,
+         length: 30
+    })
+    const constraint6 = Matter.Constraint.create({
+        bodyA: entities.Circle4.body,
+         bodyB: entities.Circle3.body,
+         length: 30
+    })
+    const constraint7 = Matter.Constraint.create({
+        bodyA: entities.Circle3.body,
+         bodyB: entities.Circle2.body,
+         length: 30
+    })
+    const constraint8 = Matter.Constraint.create({
+        bodyA: entities.Circle2.body,
+         bodyB: entities.Circle1.body,
+         length: 30
+    })
+    const constraint9 = Matter.Constraint.create({
+        bodyA: entities.Circle1.body,
+         bodyB: entities.CircleAnchorRight.body,
+         length: 30
+    })
+
+
+
+    Matter.World.add(world, constraint);
+    Matter.World.add(world, constraint2);
+    Matter.World.add(world, constraint3);
+    Matter.World.add(world, constraint4);
+    Matter.World.add(world, constraint5);
+    Matter.World.add(world, constraint6);
+    Matter.World.add(world, constraint7);
+    Matter.World.add(world, constraint8);
+    Matter.World.add(world, constraint9);
+    
 
     /*************TOUCH CONTROLS FOR PLAYER ****************/
     if (events.length) {
@@ -22,24 +93,25 @@ const Physics = (entities, { touches, time, dispatch, events }) => {
     }
 
     /*************TOUCH CONTROLS DRAGGING IN THE SCREEN ****************/
-    let x = entities.Food.body.position.x;
-    let y = entities.Food.body.position.y;
-    touches
-        .filter((t) => t.type === "move")
-        .forEach((t) => {
-            x += t.delta.pageX;
-            y += t.delta.pageY;
-            Matter.Body.setPosition(entities.Food.body, {
-                x: x,
-                y: y,
-            });
-        });
+    // let x = entities.Food.body.position.x;
+    // let y = entities.Food.body.position.y;
+    // touches
+    //     .filter((t) => t.type === "move")
+    //     .forEach((t) => {
+    //         x += t.delta.pageX;
+    //         y += t.delta.pageY;
+    //         Matter.Body.setPosition(entities.Food.body, {
+    //             x: x,
+    //             y: y,
+    //         });
+    //     });
 
     touches
         .filter((t) => t.type === "press")
         .forEach((t) => {
-
+            Matter.Body.setPosition(entities.Square.body, {x: Math.random() * ((Constants.WINDOW_WIDTH - 25) - 25) + 25, y: Math.random() * ((Constants.WINDOW_HEIGHT / 2 - 15) - 15) + 15})
         });
+
     Matter.Engine.update(engine, time.delta);
 
     Matter.Events.on(engine, "collisionStart", (event) => {
