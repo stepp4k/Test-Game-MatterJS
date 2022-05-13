@@ -1,14 +1,20 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View, Image } from "react-native";
 import { GameEngine } from "react-native-game-engine";
 import entities from "./entities";
 import React, { useEffect, useState } from "react";
 import Physics from "./Physics";
+import Constants from "./Constants";
 
 export default function App() {
   const [gameEngine, setGameEngine] = useState(null);
   return (
     <View style={styles.container}>
+      <Image
+        source={require('./assets/background.png')}
+        style={styles.backgroundImage}
+        resizeMode="stretch"
+      />
       <GameEngine
         ref={(ref) => {
           setGameEngine(ref);
@@ -67,7 +73,16 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "flex-end",
-    
+
+  },
+  backgroundImage: {
+    position: "absolute",
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    width: Constants.SCREEN_WIDTH,
+    height: Constants.SCREEN_HEIGHT,
   },
   gameContainer: {
     position: "absolute",
@@ -82,7 +97,7 @@ const styles = StyleSheet.create({
     marginBottom: 100,
     maxHeight: 150,
     width: 200,
-  },  
+  },
   controlRow: {
     flex: 1,
     flexDirection: 'row',
@@ -98,7 +113,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: 'red',
-    
+
   },
   watermark: {
     marginBottom: 15,

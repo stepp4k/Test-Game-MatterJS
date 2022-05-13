@@ -3,9 +3,9 @@ import Matter, { Sleeping } from "matter-js";
 import Constants from "./Constants";
 const Physics = (entities, { touches, time, dispatch, events }) => {
     let engine = entities.physics.engine;
-    
-    
-    let world = engine.world;
+
+
+    // let world = engine.world;
 
     engine.gravity.y = 0.5;
 
@@ -15,82 +15,82 @@ const Physics = (entities, { touches, time, dispatch, events }) => {
     //     length: 30
     // })
 
-    const constraint = Matter.Constraint.create({
-        bodyA: entities.CircleAnchorLeft.body,
-         bodyB: entities.Circle8.body,
-         length: 30
-    })
-    const constraint2 = Matter.Constraint.create({
-        bodyA: entities.Circle8.body,
-         bodyB: entities.Circle7.body,
-         length: 30
-    })
-    const constraint3 = Matter.Constraint.create({
-        bodyA: entities.Circle7.body,
-         bodyB: entities.Circle6.body,
-         length: 30
-    })
-    const constraint4 = Matter.Constraint.create({
-        bodyA: entities.Circle6.body,
-         bodyB: entities.Circle5.body,
-         length: 30
-    })
-    const constraint5 = Matter.Constraint.create({
-        bodyA: entities.Circle5.body,
-         bodyB: entities.Circle4.body,
-         length: 30
-    })
-    const constraint6 = Matter.Constraint.create({
-        bodyA: entities.Circle4.body,
-         bodyB: entities.Circle3.body,
-         length: 30
-    })
-    const constraint7 = Matter.Constraint.create({
-        bodyA: entities.Circle3.body,
-         bodyB: entities.Circle2.body,
-         length: 30
-    })
-    const constraint8 = Matter.Constraint.create({
-        bodyA: entities.Circle2.body,
-         bodyB: entities.Circle1.body,
-         length: 30
-    })
-    const constraint9 = Matter.Constraint.create({
-        bodyA: entities.Circle1.body,
-         bodyB: entities.CircleAnchorRight.body,
-         length: 30
-    })
+    // const constraint = Matter.Constraint.create({
+    //     bodyA: entities.CircleAnchorLeft.body,
+    //     bodyB: entities.Circle8.body,
+    //     length: 30
+    // })
+    // const constraint2 = Matter.Constraint.create({
+    //     bodyA: entities.Circle8.body,
+    //     bodyB: entities.Circle7.body,
+    //     length: 30
+    // })
+    // const constraint3 = Matter.Constraint.create({
+    //     bodyA: entities.Circle7.body,
+    //     bodyB: entities.Circle6.body,
+    //     length: 30
+    // })
+    // const constraint4 = Matter.Constraint.create({
+    //     bodyA: entities.Circle6.body,
+    //     bodyB: entities.Circle5.body,
+    //     length: 30
+    // })
+    // const constraint5 = Matter.Constraint.create({
+    //     bodyA: entities.Circle5.body,
+    //     bodyB: entities.Circle4.body,
+    //     length: 30
+    // })
+    // const constraint6 = Matter.Constraint.create({
+    //     bodyA: entities.Circle4.body,
+    //     bodyB: entities.Circle3.body,
+    //     length: 30
+    // })
+    // const constraint7 = Matter.Constraint.create({
+    //     bodyA: entities.Circle3.body,
+    //     bodyB: entities.Circle2.body,
+    //     length: 30
+    // })
+    // const constraint8 = Matter.Constraint.create({
+    //     bodyA: entities.Circle2.body,
+    //     bodyB: entities.Circle1.body,
+    //     length: 30
+    // })
+    // const constraint9 = Matter.Constraint.create({
+    //     bodyA: entities.Circle1.body,
+    //     bodyB: entities.CircleAnchorRight.body,
+    //     length: 30
+    // })
 
 
 
-    Matter.World.add(world, constraint);
-    Matter.World.add(world, constraint2);
-    Matter.World.add(world, constraint3);
-    Matter.World.add(world, constraint4);
-    Matter.World.add(world, constraint5);
-    Matter.World.add(world, constraint6);
-    Matter.World.add(world, constraint7);
-    Matter.World.add(world, constraint8);
-    Matter.World.add(world, constraint9);
-    
+    // Matter.World.add(world, constraint);
+    // Matter.World.add(world, constraint2);
+    // Matter.World.add(world, constraint3);
+    // Matter.World.add(world, constraint4);
+    // Matter.World.add(world, constraint5);
+    // Matter.World.add(world, constraint6);
+    // Matter.World.add(world, constraint7);
+    // Matter.World.add(world, constraint8);
+    // Matter.World.add(world, constraint9);
+
 
     /*************TOUCH CONTROLS FOR PLAYER ****************/
-    if (events.length) {
-        for (let i = 0; i < events.length; i++) {
-            if (events[i].type === "move-up") {
-                Matter.Body.setVelocity(entities.Square.body, { x: 0, y: -2 });
-            }
-            if (events[i].type === "move-down") {
-                Matter.Body.setVelocity(entities.Square.body, { x: 0, y: 2 });
-            }
-            if (events[i].type === "move-left") {
-                Matter.Body.setVelocity(entities.Square.body, { x: -2, y: 0 });
-            }
-            if (events[i].type === "move-right") {
-                Matter.Body.setVelocity(entities.Square.body, { x: 2, y: 0 });
-            }
-        }
-    }
+    // if (events.length) {
+    //     for (let i = 0; i < events.length; i++) {
+    //         if (events[i].type === "move-up") {
+    //             Matter.Body.setVelocity(entities.Square.body, { x: 0, y: -2 });
+    //         }
+    //         if (events[i].type === "move-down") {
+    //             Matter.Body.setVelocity(entities.Square.body, { x: 0, y: 2 });
+    //         }
+    //         if (events[i].type === "move-left") {
+    //             Matter.Body.setVelocity(entities.Square.body, { x: -2, y: 0 });
+    //         }
+    //         if (events[i].type === "move-right") {
+    //             Matter.Body.setVelocity(entities.Square.body, { x: 2, y: 0 });
+    //         }
+    //     }
+    // }
 
     /*************TOUCH CONTROLS DRAGGING IN THE SCREEN ****************/
     // let x = entities.Food.body.position.x;
@@ -106,14 +106,36 @@ const Physics = (entities, { touches, time, dispatch, events }) => {
     //         });
     //     });
 
+    //**************Teleport random on screen press ************************/
+
     touches
-        .filter((t) => t.type === "press")
+        .filter((t) => t.type === "press" && t.event.target === 29)
         .forEach((t) => {
-            Matter.Body.setPosition(entities.Square.body, {x: Math.random() * ((Constants.WINDOW_WIDTH - 25) - 25) + 25, y: Math.random() * ((Constants.WINDOW_HEIGHT / 2 - 15) - 15) + 15})
+
+            Matter.Body.applyForce(
+                entities.Monster.body,
+                {
+                    x: entities.Monster.body.position.x,
+                    y: entities.Monster.body.position.y
+                },
+                {
+                    x: 0.02,
+                    y: 0.02
+                }
+            )
+
+            // Matter.Body.setPosition(entities.Square.body, {
+            //     x: Math.random() * ((Constants.WINDOW_WIDTH - 25) - 25) + 25,
+            //     y: Math.random() * ((Constants.WINDOW_HEIGHT / 2 - 15) - 15) + 15
+            // })
         });
 
+
+    // set engine running
     Matter.Engine.update(engine, time.delta);
 
+
+    // Track collisions
     Matter.Events.on(engine, "collisionStart", (event) => {
         let pairs = event.pairs;
 
@@ -122,27 +144,29 @@ const Physics = (entities, { touches, time, dispatch, events }) => {
         let objALabel = pairs[0].bodyA.label;
         let objBLabel = pairs[0].bodyB.label;
 
-        
+
+
+        // Change color on boundary collision
         if (objALabel === 'Player' && objBLabel === 'Boundary') {
             Matter.Body.setVelocity(
                 entities.Square.body, {
-                    x: 0,
-                    y: 0,
-                }
+                x: 0,
+                y: 0,
+            }
             )
-            entities.Square.color = '#' + Math.floor(Math.random()*16777215).toString(16);
+            entities.Square.color = '#' + Math.floor(Math.random() * 16777215).toString(16);
         }
 
-        if (objALabel === 'Player' && objBLabel === 'Food') {
-            Matter.Body.setVelocity(
-                entities.Square.body, {
-                    x: 0,
-                    y: 0,
-                }
-            )
-            Matter.Body.setPosition(entities.Food.body, {x: Math.random() * ((Constants.WINDOW_WIDTH - 25) - 25) + 25, y: Math.random() * ((Constants.WINDOW_HEIGHT / 2 - 15) - 15) + 15})
-        }
-        
+        // if (objALabel === 'Player' && objBLabel === 'Food') {
+        //     Matter.Body.setVelocity(
+        //         entities.Square.body, {
+        //         x: 0,
+        //         y: 0,
+        //     }
+        //     )
+        //     Matter.Body.setPosition(entities.Food.body, { x: Math.random() * ((Constants.WINDOW_WIDTH - 25) - 25) + 25, y: Math.random() * ((Constants.WINDOW_HEIGHT / 2 - 15) - 15) + 15 })
+        // }
+
 
         /******************* Collision detection with boundaries *********************/
         // var objALabel = pairs[0].bodyA.label;
